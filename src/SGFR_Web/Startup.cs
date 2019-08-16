@@ -40,6 +40,8 @@ using Domain.Services.Vendas;
 using Domain.Interfaces.Services.Vendas;
 using InfraData.Repositories.Vendas;
 using Domain.Interfaces.Repositories.Vendas;
+using SGFR_Web.Models;
+using System;
 
 namespace SGFR_Web
 {
@@ -84,7 +86,7 @@ namespace SGFR_Web
             //======================Mysql===========================================
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseMySql(
-                   Configuration.GetConnectionString("DefaultConnection")));
+                   Configuration.GetConnectionString("DefaultConnection_Identity")));
 
             services.AddDbContext<DbContextoGeral>(options =>
               options.UseMySql(
@@ -95,7 +97,7 @@ namespace SGFR_Web
               options.UseMySql(
                   Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Usuario>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
